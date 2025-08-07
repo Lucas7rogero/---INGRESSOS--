@@ -1,0 +1,171 @@
+{
+  "info": {
+    "name": "Sistema de Ingressos API",
+    "description": "Coleção de requisições para testar a API de venda de ingressos",
+    "version": "1.0.0"
+  },
+  "requests": [
+    {
+      "name": "Health Check",
+      "method": "GET",
+      "url": "http://localhost:3000/",
+      "description": "Verifica se a API está funcionando"
+    },
+    {
+      "name": "Cadastrar Usuário",
+      "method": "POST",
+      "url": "http://localhost:3000/api/auth/cadastrar",
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "body": {
+        "nome": "João Silva",
+        "email": "joao@email.com",
+        "senha": "123456",
+        "tipo": "usuario"
+      }
+    },
+    {
+      "name": "Cadastrar Promotor",
+      "method": "POST",
+      "url": "http://localhost:3000/api/auth/cadastrar",
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "body": {
+        "nome": "Maria Promotora",
+        "email": "maria@promotora.com",
+        "senha": "123456",
+        "tipo": "promotor"
+      }
+    },
+    {
+      "name": "Login Usuário",
+      "method": "POST",
+      "url": "http://localhost:3000/api/auth/login",
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "body": {
+        "email": "joao@email.com",
+        "senha": "123456"
+      }
+    },
+    {
+      "name": "Login Promotor",
+      "method": "POST",
+      "url": "http://localhost:3000/api/auth/login",
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "body": {
+        "email": "maria@promotora.com",
+        "senha": "123456"
+      }
+    },
+    {
+      "name": "Criar Evento",
+      "method": "POST",
+      "url": "http://localhost:3000/api/eventos",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer SEU_TOKEN_AQUI"
+      },
+      "body": {
+        "nome": "Show do Rock Nacional",
+        "descricao": "Um show incrível com as melhores bandas do rock nacional. Não perca esta oportunidade única!",
+        "dataHora": "2024-12-31T20:00:00.000Z",
+        "local": "Arena da Cidade - São Paulo, SP",
+        "imagem": "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f",
+        "preco": 150.00,
+        "ingressosTotais": 1000
+      }
+    },
+    {
+      "name": "Listar Todos os Eventos",
+      "method": "GET",
+      "url": "http://localhost:3000/api/eventos",
+      "description": "Lista todos os eventos com ingressos disponíveis"
+    },
+    {
+      "name": "Listar Meus Eventos (Promotor)",
+      "method": "GET",
+      "url": "http://localhost:3000/api/eventos/meus",
+      "headers": {
+        "Authorization": "Bearer SEU_TOKEN_PROMOTOR_AQUI"
+      }
+    },
+    {
+      "name": "Obter Evento por ID",
+      "method": "GET",
+      "url": "http://localhost:3000/api/eventos/ID_DO_EVENTO",
+      "description": "Substitua ID_DO_EVENTO pelo ID real do evento"
+    },
+    {
+      "name": "Editar Evento",
+      "method": "PUT",
+      "url": "http://localhost:3000/api/eventos/ID_DO_EVENTO",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer SEU_TOKEN_PROMOTOR_AQUI"
+      },
+      "body": {
+        "nome": "Show do Rock Nacional - ATUALIZADO",
+        "preco": 180.00
+      }
+    },
+    {
+      "name": "Comprar Ingresso",
+      "method": "POST",
+      "url": "http://localhost:3000/api/ingressos/comprar/ID_DO_EVENTO",
+      "headers": {
+        "Authorization": "Bearer SEU_TOKEN_USUARIO_AQUI"
+      },
+      "description": "Substitua ID_DO_EVENTO pelo ID real do evento"
+    },
+    {
+      "name": "Listar Meus Ingressos",
+      "method": "GET",
+      "url": "http://localhost:3000/api/ingressos/meus",
+      "headers": {
+        "Authorization": "Bearer SEU_TOKEN_USUARIO_AQUI"
+      }
+    },
+    {
+      "name": "Obter Ingresso por ID",
+      "method": "GET",
+      "url": "http://localhost:3000/api/ingressos/ID_DO_INGRESSO",
+      "headers": {
+        "Authorization": "Bearer SEU_TOKEN_USUARIO_AQUI"
+      },
+      "description": "Substitua ID_DO_INGRESSO pelo ID real do ingresso"
+    },
+    {
+      "name": "Validar Código de Ingresso",
+      "method": "GET",
+      "url": "http://localhost:3000/api/ingressos/validar/CODIGO_DO_INGRESSO",
+      "headers": {
+        "Authorization": "Bearer SEU_TOKEN_AQUI"
+      },
+      "description": "Substitua CODIGO_DO_INGRESSO pelo código real do ingresso"
+    },
+    {
+      "name": "Deletar Evento",
+      "method": "DELETE",
+      "url": "http://localhost:3000/api/eventos/ID_DO_EVENTO",
+      "headers": {
+        "Authorization": "Bearer SEU_TOKEN_PROMOTOR_AQUI"
+      },
+      "description": "Substitua ID_DO_EVENTO pelo ID real do evento"
+    }
+  ],
+  "notes": [
+    "1. Primeiro, cadastre um usuário e um promotor",
+    "2. Faça login para obter os tokens JWT",
+    "3. Use o token do promotor para criar eventos",
+    "4. Use o token do usuário para comprar ingressos",
+    "5. Substitua 'SEU_TOKEN_AQUI' pelos tokens reais obtidos no login",
+    "6. Substitua os IDs pelos valores reais retornados pelas APIs"
+  ]
+}
+
